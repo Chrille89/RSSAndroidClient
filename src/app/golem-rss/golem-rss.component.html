@@ -8,13 +8,13 @@
   
   <ion-content padding>
   
-      <ion-item>
+      <ion-item *ngFor="let feed of rssFeeds">
           <ion-thumbnail item-start>
-            <img src="img/thumbnail-totoro.png">
+            <img src="{{feed.pictureUrl}}">
           </ion-thumbnail>
           <div>
-              <h2>My Neighbor Totoro</h2>
-              <p>Hayao Miyazaki • 1988</p>
+              <h2>{{feed.title}}</h2>
+              <p>{{feed.description}}</p>
           </div>
         </ion-item>
   </ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-golem-rss',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GolemRssComponent implements OnInit {
 
-  constructor() { }
+  rssFeeds: any[];
+
+
+  constructor(private dataService : DataService ) { }
 
   ngOnInit() {
+    this.dataService.getGolemNews().subscribe((data : any[]) => {
+      this.rssFeeds = data;
+      console.log("Get data: "+this.rssFeeds);
+    });
   }
 
 }
