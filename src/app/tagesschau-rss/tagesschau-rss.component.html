@@ -1,0 +1,10 @@
+<h1>Tagesschau News</h1>
+    <ion-item *ngFor="let feed of rssFeeds">
+        <ion-thumbnail item-start>
+          <img src="{{feed.pictureUrl}}">
+        </ion-thumbnail>
+        <div>
+            <h2>{{feed.title}}</h2>
+            <p>{{feed.description}}</p>
+        </div>
+      </ion-item>

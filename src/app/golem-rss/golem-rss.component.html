@@ -1,13 +1,4 @@
-<ion-header>
-    <ion-toolbar>
-      <ion-title>
-        Ionic Blank
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content padding>
-  
+<h1>Golem News</h1>
       <ion-item *ngFor="let feed of rssFeeds">
           <ion-thumbnail item-start>
             <img src="{{feed.pictureUrl}}">
@@ -17,5 +8,5 @@
               <p>{{feed.description}}</p>
           </div>
         </ion-item>
-  </ion-content>
+
   
