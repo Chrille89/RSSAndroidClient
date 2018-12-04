@@ -13,10 +13,7 @@ export class GolemRssComponent implements OnInit {
   constructor(private dataService : DataService ) { }
 
   ngOnInit() {
-    this.dataService.getGolemNews().subscribe((data : any[]) => {
-      this.rssFeeds = data;
-      console.log("Get data: "+this.rssFeeds);
-    });
+    this.rssFeeds = this.dataService.getGolemNews();
   }
 
 }
