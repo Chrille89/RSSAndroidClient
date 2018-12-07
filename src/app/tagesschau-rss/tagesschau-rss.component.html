@@ -1,10 +1,12 @@
 <h1>Tagesschau News</h1>
-    <ion-item *ngFor="let feed of rssFeeds">
-        <ion-thumbnail item-start>
-          <img src="{{feed.pictureUrl}}">
-        </ion-thumbnail>
-        <div>
-            <h2>{{feed.title}}</h2>
+<ion-grid>
+    <button ion-item *ngFor="let feed of rssFeeds" style="background: rgba(0,0,0,0);">
+        <ion-row style="margin:5px;">
+            <ion-thumbnail item-start style="margin:5px;">
+                <img src="{{feed.pictureUrl}}">
+            </ion-thumbnail>
+            <h3><a href="{{feed.link}}">{{feed.title}}</a></h3>
             <p>{{feed.description}}</p>
-        </div>
-      </ion-item>
+        </ion-row>
+    </button>
+</ion-grid>
