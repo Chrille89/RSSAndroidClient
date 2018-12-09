@@ -1,12 +1,15 @@
 <h1>Golem News</h1>
-<ion-grid>
-  <button ion-item *ngFor="let feed of rssFeeds" style="background: rgba(0,0,0,0);">
-    <ion-row style="margin:5px;">
-      <ion-thumbnail item-start style="margin:5px;">
-        <img src="{{feed.pictureUrl}}">
-      </ion-thumbnail>
-      <h3><a href="{{feed.link}}">{{feed.title}}</a></h3>
-      <p>{{feed.description}}</p>
-    </ion-row>
-  </button>
-</ion-grid>
+
+<div class="grid-container">
+    <div class="row justify-content-sm-center">
+      <div class="col-sm">
+        One of three columns
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+    </div>
+  </div>
