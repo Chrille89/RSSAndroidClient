@@ -40,11 +40,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_dashboard:
-                    getNewsByEndpoint("/golemnews");
+                case R.id.navigation_notifications_golem:
+                    getNewsByEndpoint("/golem");
                     return true;
-                case R.id.navigation_notifications:
-                    getNewsByEndpoint("/tagesschaunews");
+                case R.id.navigation_notifications_heise:
+                    getNewsByEndpoint("/heise");
+                    return true;
+                case R.id.navigation_notifications_tagesschau:
+                    getNewsByEndpoint("/tagesschau");
                     return true;
             }
             return false;
@@ -98,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        getNewsByEndpoint("/golemnews");
+        getNewsByEndpoint("/golem");
     }
 
     @Override
