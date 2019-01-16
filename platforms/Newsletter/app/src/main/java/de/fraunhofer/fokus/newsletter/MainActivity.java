@@ -28,12 +28,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private final String baseUrl = "http://gondor.selfhost.eu:8080";
+    private static final String TAG = MainActivity.class.getSimpleName();
     private TextView mTextMessage;
-    private WebView webView;
     private GridView gridView;
     private List<String> objects = null;
     private JSONArray mediaContentJSONArray = null;
-    private ListAdapter listAdapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -42,10 +41,10 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_dashboard:
-                    getGolemNews();
+                    getNewsByEndpoint("/golemnews");
                     return true;
                 case R.id.navigation_notifications:
-                    getTagesschauNews();
+                    getNewsByEndpoint("/tagesschaunews");
                     return true;
             }
             return false;
@@ -53,24 +52,23 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    private void getGolemNews(){
+    private void getNewsByEndpoint(String endPoint) {
         try {
             MediaLoader mediaLoader = new MediaLoader();
-            mediaLoader.execute(new URL(baseUrl+"/golemnews"));
+            mediaLoader.execute(new URL(baseUrl + endPoint));
             mediaContentJSONArray = mediaLoader.get();
 
             objects = new ArrayList<>();
 
-            for(int i=0; i<mediaContentJSONArray.length(); i++){
+            for (int i = 0; i < mediaContentJSONArray.length(); i++) {
                 objects.add(mediaContentJSONArray.getJSONObject(i).getString("title"));
-                //  mediaNames.add(mediaContentJSONArray.getJSONObject(i).getString("content_name"));
             }
-        } catch(Exception e ){
-            Log.e("MainActivity",e.getLocalizedMessage());
+        } catch (Exception e) {
+            Log.e(TAG, e.getLocalizedMessage());
         }
 
         ListAdapter listAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, objects);
-        gridView = (GridView)findViewById(R.id.grid);
+        gridView = (GridView) findViewById(R.id.grid);
         gridView.setAdapter(listAdapter);
 
         final JSONArray array = mediaContentJSONArray;
@@ -79,51 +77,13 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 try {
-                    JSONObject object = (JSONObject)array.get(position);
+                    JSONObject object = (JSONObject) array.get(position);
                     Intent i = new Intent(Intent.ACTION_VIEW);
                     String url = object.getString("link");
                     i.setData(Uri.parse(url));
                     startActivity(i);
-                } catch(Exception e){
-                    Log.e("MainActivity",e.getLocalizedMessage());
-                }
-            }
-        });
-    }
-
-    private void getTagesschauNews() {
-        try {
-            MediaLoader mediaLoader = new MediaLoader();
-            mediaLoader.execute(new URL(baseUrl+"/tagesschaunews"));
-            mediaContentJSONArray = mediaLoader.get();
-
-            objects = new ArrayList<>();
-
-            for(int i=0; i<mediaContentJSONArray.length(); i++){
-                objects.add(mediaContentJSONArray.getJSONObject(i).getString("title"));
-                //  mediaNames.add(mediaContentJSONArray.getJSONObject(i).getString("content_name"));
-            }
-        } catch(Exception e ){
-            Log.e("MainActivity",e.getLocalizedMessage());
-        }
-
-        listAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, objects);
-        gridView = (GridView)findViewById(R.id.grid);
-        gridView.setAdapter(listAdapter);
-
-        final JSONArray array = mediaContentJSONArray;
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                try {
-                    JSONObject object = (JSONObject)array.get(position);
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    String url = object.getString("link");
-                    i.setData(Uri.parse(url));
-                    startActivity(i);
-                } catch(Exception e){
-                    Log.e("MainActivity",e.getLocalizedMessage());
+                } catch (Exception e) {
+                    Log.e(TAG, e.getLocalizedMessage());
                 }
             }
         });
@@ -132,12 +92,49 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG,"onCreate()");
         setContentView(R.layout.activity_main);
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        getGolemNews();
+        getNewsByEndpoint("/golemnews");
     }
 
+    @Override
+    protected void onStart() {
+        Log.d(TAG,"onStart()");
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d(TAG,"onStop()");
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d(TAG,"onDestroy()");
+
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d(TAG,"onPause()");
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d(TAG,"onResume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.d(TAG,"onRestart()");
+        super.onRestart();
+    }
 }
