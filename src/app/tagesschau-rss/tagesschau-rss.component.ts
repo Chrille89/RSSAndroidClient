@@ -12,8 +12,9 @@ export class TagesschauRssComponent implements OnInit {
   constructor(private dataService : DataService ) { }
 
   ngOnInit() {
-    this.rssFeeds = this.dataService.getTagesschauNews();
+    this.dataService.getTagesschauNews()
+    .subscribe((data: any[]) => {
+        this.rssFeeds = data;
+    });
   }
-
-
 }

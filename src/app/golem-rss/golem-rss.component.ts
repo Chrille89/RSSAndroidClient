@@ -7,13 +7,14 @@ import { DataService } from '../data.service';
   styleUrls: ['./golem-rss.component.scss']
 })
 export class GolemRssComponent implements OnInit {
-
   rssFeeds: any[];
 
   constructor(private dataService : DataService ) { }
 
   ngOnInit() {
-    this.rssFeeds = this.dataService.getGolemNews();
+    this.dataService.getGolemNews()
+    .subscribe((data: any[]) => {
+        this.rssFeeds = data;
+    });
   }
-
 }

@@ -1,0 +1,13 @@
+<h1>Heise News</h1>
+<ion-grid>
+  <button ion-item *ngFor="let feed of rssFeeds" style="background: rgba(0,0,0,0);">
+    <ion-row>
+      <ion-col>
+        <img src="{{feed.pictureUrl}}">
+      </ion-col>
+      <ion-col>
+        <p><a href="{{feed.link}}">{{feed.title}}</a></p>
+      </ion-col>
+    </ion-row>
+  </button>
+</ion-grid>
