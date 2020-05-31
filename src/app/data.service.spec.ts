@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DataService } from './golem-rss/data.service';
+import { DataService } from './data.service';
 
 describe('DataService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
