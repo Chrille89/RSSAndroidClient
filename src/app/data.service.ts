@@ -25,4 +25,9 @@ export class DataService {
     console.log("Start Request");
     return this.httpClient.get(this.endpoint+"/heise");
   }
+
+  getGameStarNews() {
+    console.log("Start Request");
+    return this.httpClient.get(this.endpoint+"/gamestar");
+  }
 }

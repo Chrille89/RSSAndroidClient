@@ -10,11 +10,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { GolemRssComponent } from './golem-rss/golem-rss.component';
 import { HeiseRssComponent } from './heise-rss/heise-rss.component';
+import { GameStarRssComponent } from './game-star-rss/game-star-rss.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TagesschauRssComponent } from './tagesschau-rss/tagesschau-rss.component';
 
 @NgModule({
-  declarations: [AppComponent, GolemRssComponent, HeiseRssComponent, TagesschauRssComponent],
+  declarations: [AppComponent, GolemRssComponent, HeiseRssComponent, GameStarRssComponent, TagesschauRssComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule,AppRoutingModule ],
   providers: [
