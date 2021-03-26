@@ -1,9 +1,8 @@
 {
   "name": "RSSAndroidClient",
   "integrations": {
-    "cordova": {}
+    "capacitor": {}
   },
   "type": "angular",
-  "pro_id": "fe7e17de",
   "id": "fe7e17de"
 }
