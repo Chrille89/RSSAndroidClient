@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
 
-  private endpoint : string = "http://h2857701.stratoserver.net:8090/RssServer-0.0.1";
+  private endpoint : string = "http://h2857701.stratoserver.net:8080/RssServer";
   //private endpoint : string = "http://localhost:8080";
 
   constructor(private httpClient : HttpClient) { }

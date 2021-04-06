@@ -1,5 +1,5 @@
 .gradle
+android/.idea
 www
-android
 node_modules
 plugins
